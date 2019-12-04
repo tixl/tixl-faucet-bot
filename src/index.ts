@@ -27,12 +27,13 @@ bot.on('text', async (ctx: any) => {
       log.info('User is being sent funds', { address, username });
       try {
         await sendFromGenesis(address);
+        ctx.reply(`Understood. Your address is "${address}". I just sent you 10 MTXL, you should receive it soon.`);
+        log.info('User got confirmation', { address, username });
         await updateOrCreateUserTimestamp(username);
       } catch (error) {
+        ctx.reply(`Sorry, there was an error, please try again later.`);
         log.error(error);
       }
-      ctx.reply(`Understood. Your address is "${address}". I just sent you 10 MTXL, you should receive it soon.`);
-      log.info('User got confirmation', { address, username });
     } else {
       log.info('User entered invalid address', { address, username });
       ctx.reply('This does not seem like a valid address. Check your address and send it again.');

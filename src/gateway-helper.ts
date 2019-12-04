@@ -14,17 +14,20 @@ export function hashVal(val: string) {
 }
 
 export async function getBlockchain(signaturePublicKey: string): Promise<Blockchain | undefined> {
-  const res = await axios.post(chainUrl, {
-    data: {
+  const res = await axios.post(
+    chainUrl,
+    {
       signaturePublicKey,
     },
-    headers: {
-      'content-type': 'application/json',
+    {
+      headers: {
+        'content-type': 'application/json',
+      },
     },
-  });
+  );
 
   if (res.status !== 200) {
-    log.error('WALLETBOTS cannot reach gateway', { statusText: res.statusText });
+    log.error('FAUCET BOT cannot reach gateway', { statusText: res.statusText });
     return;
   }
 
@@ -42,7 +45,7 @@ export async function sendTx(transaction: Transaction) {
     const hash = res.data && res.data.hash;
 
     if (hash) {
-      log.info('BOT WALLETS send tx; hash: ' + hash);
+      log.info('FAUCET BOT send tx; hash: ' + hash);
     }
 
     return;
