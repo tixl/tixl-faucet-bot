@@ -26,8 +26,11 @@ bot.on('text', async (ctx: any) => {
     if (isAddressValid(address)) {
       log.info('User is being sent funds', { address, username });
       try {
-        await sendFromGenesis(address);
-        ctx.reply(`Understood. Your address is "${address}". I just sent you 10 MTXL, you should receive it soon.`);
+        const amount = await sendFromGenesis(address);
+        ctx.reply(
+          `Understood. Your address is "${address}". I just sent you ${amount /
+            BigInt(10000000)} TXL, you should receive it soon.`,
+        );
         log.info('User got confirmation', { address, username });
         await updateOrCreateUserTimestamp(username);
       } catch (error) {

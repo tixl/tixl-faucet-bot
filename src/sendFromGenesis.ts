@@ -1,13 +1,14 @@
 import { utils } from '@tixl/tixl-ledger';
 import { getBlockchain, sendTx } from './gateway-helper';
 
-export const sendFromGenesis = async (address: string) => {
+export const sendFromGenesis = async (address: string): Promise<BigInt> => {
   const genChain = await getBlockchain(process.env.GEN_SIG_PUB || '');
   const genLeaf = genChain && genChain.leaf();
   if (!genChain || !genLeaf) throw 'no genesis chain found';
   await utils.decryptSender(genLeaf, process.env.GEN_AES || '', true);
   await utils.decryptReceiver(genLeaf, process.env.GEN_NTRU_PRIV || '');
-  const sendAmount = BigInt(10 * 1000000);
+  const rndTxl = Math.floor(Math.random() * 5000) + 1; // rng between 1..5000
+  const sendAmount = BigInt(rndTxl);
   const newGenBalance = BigInt(genLeaf.senderBalance) - sendAmount;
   const send = await utils.createSendBlock(
     genChain,
@@ -20,4 +21,6 @@ export const sendFromGenesis = async (address: string) => {
   send.tx.slot = 0;
 
   await sendTx(send.tx);
+
+  return sendAmount;
 };
