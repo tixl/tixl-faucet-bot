@@ -46,6 +46,7 @@ export async function sendTx(transaction: Transaction) {
 
     if (hash) {
       log.info('FAUCET BOT send tx; hash: ' + hash);
+      return hash;
     }
 
     return;

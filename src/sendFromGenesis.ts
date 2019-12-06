@@ -1,7 +1,7 @@
 import { utils } from '@tixl/tixl-ledger';
 import { getBlockchain, sendTx } from './gateway-helper';
 
-export const sendFromGenesis = async (address: string): Promise<bigint> => {
+export const sendFromGenesis = async (address: string): Promise<{ sendAmount: bigint; hash: string }> => {
   const genChain = await getBlockchain(process.env.GEN_SIG_PUB || '');
   const genLeaf = genChain && genChain.leaf();
   if (!genChain || !genLeaf) throw 'no genesis chain found';
@@ -20,7 +20,7 @@ export const sendFromGenesis = async (address: string): Promise<bigint> => {
   );
   send.tx.slot = 0;
 
-  await sendTx(send.tx);
+  const hash = await sendTx(send.tx);
 
-  return sendAmount;
+  return { sendAmount, hash };
 };
