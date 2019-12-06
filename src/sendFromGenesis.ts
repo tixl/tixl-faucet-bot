@@ -7,8 +7,8 @@ export const sendFromGenesis = async (address: string): Promise<bigint> => {
   if (!genChain || !genLeaf) throw 'no genesis chain found';
   await utils.decryptSender(genLeaf, process.env.GEN_AES || '', true);
   await utils.decryptReceiver(genLeaf, process.env.GEN_NTRU_PRIV || '');
-  const rndTxl = Math.floor(Math.random() * 5000) + 1; // rng between 1..5000
-  const sendAmount = BigInt(rndTxl) * BigInt(Math.pow(10, 7));
+  const rndTxl = Math.floor(Math.random() * 5000000) + 1; // rng between 1..5,000,000
+  const sendAmount = BigInt(rndTxl) * BigInt(Math.pow(10, 4));
   const newGenBalance = BigInt(genLeaf.senderBalance) - sendAmount;
   const send = await utils.createSendBlock(
     genChain,
