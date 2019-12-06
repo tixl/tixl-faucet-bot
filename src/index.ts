@@ -27,7 +27,7 @@ bot.on('text', async (ctx: any) => {
       log.info('User is being sent funds', { address, username });
       try {
         const amount: bigint = await sendFromGenesis(address);
-        const txlAmount = amount / BigInt(10 ** 7);
+        const txlAmount = amount / BigInt(Math.pow(10, 7));
         ctx.reply(
           `Understood. Your address is "${address}". I just sent you ${txlAmount} TXL, you should receive it soon.`,
         );
