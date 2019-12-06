@@ -31,7 +31,7 @@ bot.on('text', async (ctx: any) => {
         ctx.reply(
           `Understood. Your address is "${address}". I just sent you ${txlAmount} TXL, you should receive it soon.`,
         );
-        log.info('User got confirmation', { address, username, amount });
+        log.info('User got confirmation', { address, username, amount: String(amount) });
         await updateOrCreateUserTimestamp(username);
       } catch (error) {
         ctx.reply(`Sorry, there was an error, please try again later.`);
