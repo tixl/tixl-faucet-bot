@@ -29,7 +29,7 @@ bot.on('text', async (ctx: any) => {
         const { sendAmount, hash } = await sendFromGenesis(address);
         const txlAmount = sendAmount / BigInt(Math.pow(10, 7));
         ctx.reply(
-          `Understood. Your address is "${address}". I just sent you ${txlAmount} TXL, you should receive it soon.`,
+          `Understood. Your address is "${address}". I just sent you ${txlAmount} TXL, you should receive it soon. The hash of the transaction is ${hash}.`,
         );
         log.info('User got confirmation', { address, username, amount: String(sendAmount), hash });
         await updateOrCreateUserTimestamp(username);
