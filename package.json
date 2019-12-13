@@ -1,11 +1,11 @@
 {
   "name": "tixl-faucet-bot",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "lib/index.js",
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "start": "ts-node index.ts"
+    "start": "ts-node src/index.ts"
   },
   "dependencies": {
     "@tixl/tixl-ledger": "^1.8.2",
