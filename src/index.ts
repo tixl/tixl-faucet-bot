@@ -37,6 +37,7 @@ bot.on('text', async (ctx: any) => {
         ctx.reply(
           `I just sent you ~${txlAmount} TXL, you should receive it soon. The hash of the transaction is ${hash}.`,
         );
+        ctx.reply(`You can track the transaction on https://explorer.tixl.dev`)
 
         log.info('User got confirmation', { address, username, amount: String(sendAmount), hash });
         await updateOrCreateUserTimestamp(username);
