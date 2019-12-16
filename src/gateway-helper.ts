@@ -14,17 +14,11 @@ export function hashVal(val: string) {
 }
 
 export async function getBlockchain(signaturePublicKey: string): Promise<Blockchain | undefined> {
-  const res = await axios.post(
-    chainUrl,
-    {
-      signaturePublicKey,
+  const res = await axios.get(chainUrl + `?signaturePublicKey=${signaturePublicKey}`, {
+    headers: {
+      'content-type': 'application/json',
     },
-    {
-      headers: {
-        'content-type': 'application/json',
-      },
-    },
-  );
+  });
 
   if (res.status !== 200) {
     log.error('FAUCET BOT cannot reach gateway', { statusText: res.statusText });
