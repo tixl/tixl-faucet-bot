@@ -10,6 +10,8 @@ if (process.env.NODE_ENV === 'production') {
   configureLogger(process.env.LOGDNA_KEY, process.env.LOGDNA_APP);
   startLifeSignal();
 }
+const admins: string[] = ['bstrehl', 'ceichinger', 'seb0zz', 'CorentinCl', 'Moecxck'];
+const isAdmin = (username: string) => admins.some(a => a === username);
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
 
@@ -22,7 +24,7 @@ bot.on('text', async (ctx: any) => {
   const username = ctx.message.from.username;
   log.info('User attempts to get funds', { address, username });
   const canReceive = await canUserReceive(username);
-  if (canReceive) {
+  if (isAdmin(username) || canReceive) {
     if (isAddressValid(address)) {
       log.info('User is being sent funds', { address, username });
       try {
@@ -37,7 +39,7 @@ bot.on('text', async (ctx: any) => {
         ctx.reply(
           `I just sent you ~${txlAmount} TXL, you should receive it soon. The hash of the transaction is ${hash}.`,
         );
-        ctx.reply(`You can track the transaction on https://explorer.tixl.dev`)
+        ctx.reply(`You can track the transaction on https://explorer.tixl.dev`);
 
         log.info('User got confirmation', { address, username, amount: String(sendAmount), hash });
         await updateOrCreateUserTimestamp(username);
@@ -51,7 +53,7 @@ bot.on('text', async (ctx: any) => {
     }
   } else {
     log.info('User is on timeout', { address, username });
-    ctx.reply(`You aleady received tokens for this account. Please wait 48 hours.`);
+    ctx.reply(`You aleady received tokens for this account. Please wait 60 minutes.`);
   }
 });
 bot.launch();
