@@ -18,20 +18,22 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
-"@tixl/tixl-crypto@1.4.13":
-  version "1.4.13"
-  resolved "https://npm.pkg.github.com/download/@tixl/tixl-crypto/1.4.13/6c5243a5034a227959d491efeeb4f428950a946f6757f28cbb931002a257aeb3#a062f2192f6034056f04f050f9616abed143e6e2"
-  integrity sha512-e31XKakzx++wlo0y6dXCp7n2yhuvMFKFMYU3bHZ018KGxmPesEf00dPCXvvDnM/wUg9CiHaD2D6Buq4JHr0NTg==
+"@tixl/tixl-crypto@1.5.0":
+  version "1.5.0"
+  resolved "https://npm.pkg.github.com/download/@tixl/tixl-crypto/1.5.0/b2b63096baf862ba6df23c377909a6bc9e909d113c2c7b91520c89c7fad67d49#0bd74a16d9f17127ca40631dc08a65700043965a"
+  integrity sha512-GZvgY8g7l9kDkfjylmAIi0O7QZJeP/S8+GnQhvoteSq3SFBwm3UrOaQb+eQzRFVpO7EJfdNAHneaSIQ6AZqB8Q==
   dependencies:
     "@tixl/tixl-ntru" "0.1.11"
     "@tixl/tixl-pedersen-commitments" "2.1.0"
-    "@types/bs58" "4.0.0"
-    "@types/chai" "4.2.5"
+    "@tixl/tixl-types" "0.2.0"
+    "@tixl/tixl-workflows" "0.2.1"
+    "@types/bs58" "4.0.1"
+    "@types/chai" "4.2.7"
     "@types/create-hash" "1.2.2"
-    "@types/long" "4.0.0"
+    "@types/long" "4.0.1"
     "@types/mocha" "5.2.7"
-    "@types/node" "12.12.7"
-    "@types/node-fetch" "2.5.3"
+    "@types/node" "13.5.0"
+    "@types/node-fetch" "2.5.4"
     "@types/secp256k1" "3.5.0"
     blakejs "1.1.0"
     bs58 "4.0.1"
@@ -39,25 +41,27 @@
     long "4.0.0"
     node-fetch "2.6.0"
     secp256k1 "3.7.1"
-    tweetnacl "1.0.1"
+    tweetnacl "1.0.2"
     tweetnacl-blake2b "1.0.1"
     tweetnacl-util "0.15.0"
 
-"@tixl/tixl-ledger@^1.8.2":
-  version "1.8.2"
-  resolved "https://npm.pkg.github.com/download/@tixl/tixl-ledger/1.8.2/cfcd59d2a060c1d548710e161304f3c7e3b3a6dd2d6c9c090930b96ad5ac5d0e#fd118a4d5c0076d2bd07df6d856c6919ae2ee52d"
-  integrity sha512-DSpZ2M+yWbrB6qTon4tPKMFSOZ0LA/xSnwdrFL9ESASbrxziiyDK1OIFvzs+bC8V8hC+3BooPvp6qwy4mNG0Mg==
+"@tixl/tixl-ledger@1.10.1":
+  version "1.10.1"
+  resolved "https://npm.pkg.github.com/download/@tixl/tixl-ledger/1.10.1/d0bb8cf727383ac9b7d8463dec437420f206b3d7a4844ee82d0a825523f23167#0fc4e416da57d875f7bf52594fb4ff9ccfe2ed7c"
+  integrity sha512-pE4WFMlDxU3vaHjnEGP1wlZewS1NKt8TwUCUSwjFxL/tWtFSN/ugnX0cOYdvQ0Lz4iE5EICuNbZEFsr+XTihvQ==
   dependencies:
-    "@tixl/tixl-crypto" "1.4.13"
-    "@types/chai" "4.2.5"
+    "@tixl/tixl-crypto" "1.5.0"
+    "@tixl/tixl-types" "0.2.1"
+    "@types/chai" "4.2.7"
     "@types/debug" "4.1.5"
     "@types/mocha" "5.2.7"
-    "@types/node" "12.12.7"
+    "@types/node" "13.5.1"
     "@types/sha.js" "2.4.0"
-    "@types/sqlite3" "3.1.5"
+    "@types/sqlite3" "3.1.6"
     debug "4.1.1"
     highwayhash "2.5.0"
-    sqlite3 "4.1.0"
+    jsbi "3.1.1"
+    sqlite3 "4.1.1"
     winston "3.2.1"
 
 "@tixl/tixl-ntru@0.1.11":
@@ -76,24 +80,46 @@
     long "^4.0.0"
     randombytes "^2.1.0"
 
-"@types/base-x@*":
-  version "3.0.6"
-  resolved "https://registry.yarnpkg.com/@types/base-x/-/base-x-3.0.6.tgz#23fcfaa1cfe14d47524985375044cbb84465d9ca"
-  integrity sha512-sWf3jyM1xa/k7kP+CWtF72cgY4PjPEIWg+zaaFMX8oND9Qy+MRFnol2pl4Rb6K+P6LDrVkUoXdI3C1ekXQonYA==
+"@tixl/tixl-types@0.2.0":
+  version "0.2.0"
+  resolved "https://npm.pkg.github.com/download/@tixl/tixl-types/0.2.0/165154d3456395f224684b49556b1b2bf2a1d7c55a9e61dc89f5b8acd3b9aec9#7062f39c24bf5df5c916e1db6db18002f4741517"
+  integrity sha512-iQvTGmuJ+Esc6405zHW7sxDK2PHsKzfFrAC96TipGhW/gLCpIFhBNLj+gDqO1u0sKEGwk899mePpbtP4GEoXYQ==
   dependencies:
-    base-x "*"
+    jsbi "3.1.1"
 
-"@types/bs58@4.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@types/bs58/-/bs58-4.0.0.tgz#baec75cb007b419ede3ec6b3410d2c8f14c92fc5"
-  integrity sha512-gYX+MHD4G/R+YGYwdhG5gbJj4LsEQGr3Vg6gVDAbe7xC5Bn8dNNG2Lpo6uDX/rT5dE7VBj0rGEFuV8L0AEx4Rg==
+"@tixl/tixl-types@0.2.1":
+  version "0.2.1"
+  resolved "https://npm.pkg.github.com/download/@tixl/tixl-types/0.2.1/24490e83d71b261c3837ec081d035aab3d0e895e89a5f6cd48aff6a294369bb1#0af612b5e96f4eec868270819a41baa875f22c63"
+  integrity sha512-KdwAXUEFVeTEVvfQS6cauQ0RcKQ2Ewrv7s0rn12o24Kze5WUeaHARzTia3XzSnBh9WRT7h4IB7juBeC2gMBFxw==
   dependencies:
-    "@types/base-x" "*"
+    jsbi "3.1.1"
 
-"@types/chai@4.2.5":
-  version "4.2.5"
-  resolved "https://registry.yarnpkg.com/@types/chai/-/chai-4.2.5.tgz#f8da153ebbe30babb0adc9a528b9ad32be3175a2"
-  integrity sha512-YvbLiIc0DbbhiANrfVObdkLEHJksQZVq0Uvfg550SRAKVYaEJy+V70j65BVe2WNp6E3HtKsUczeijHFCjba3og==
+"@tixl/tixl-workflows@0.2.1":
+  version "0.2.1"
+  resolved "https://npm.pkg.github.com/download/@tixl/tixl-workflows/0.2.1/de03572e061c3a3c58f9ed8fe7928c3da204eec5d21bf2490a262c6693878cdb#eb0fe6aabdb29005711e3f0d2b6b89b1815603d4"
+  integrity sha512-xkGmrFVSjM3bkODLSjVy7UlbyZsDlcSCuMBgRGaXr04WUz8GuD+PSaiSRggFCyZr25G6o0vIFZzMZ5tmm3cEeA==
+  dependencies:
+    "@tixl/tixl-types" "0.2.0"
+    "@types/bs58" "4.0.1"
+    "@types/node" "13.5.0"
+    "@types/secp256k1" "3.5.0"
+    bs58 "4.0.1"
+    buffer "5.4.3"
+    js-sha256 "0.9.0"
+    jsbi "3.1.1"
+    secp256k1 "3.7.1"
+
+"@types/bs58@4.0.1":
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/@types/bs58/-/bs58-4.0.1.tgz#3d51222aab067786d3bc3740a84a7f5a0effaa37"
+  integrity sha512-yfAgiWgVLjFCmRv8zAcOIHywYATEwiTVccTLnRp6UxTNavT55M9d/uhK3T03St/+8/z/wW+CRjGKUNmEqoHHCA==
+  dependencies:
+    base-x "^3.0.6"
+
+"@types/chai@4.2.7":
+  version "4.2.7"
+  resolved "https://registry.yarnpkg.com/@types/chai/-/chai-4.2.7.tgz#1c8c25cbf6e59ffa7d6b9652c78e547d9a41692d"
+  integrity sha512-luq8meHGYwvky0O7u0eQZdA7B4Wd9owUCqvbw2m3XCrCU8mplYOujMBbvyS547AxJkC+pGnd0Cm15eNxEUNU8g==
 
 "@types/create-hash@1.2.2":
   version "1.2.2"
@@ -107,32 +133,37 @@
   resolved "https://registry.yarnpkg.com/@types/debug/-/debug-4.1.5.tgz#b14efa8852b7768d898906613c23f688713e02cd"
   integrity sha512-Q1y515GcOdTHgagaVFhHnIFQ38ygs/kmxdNpvpou+raI9UO3YZcHDngBSYKQklcKlvA7iuQlmIKbzvmxcOE9CQ==
 
-"@types/long@4.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@types/long/-/long-4.0.0.tgz#719551d2352d301ac8b81db732acb6bdc28dbdef"
-  integrity sha512-1w52Nyx4Gq47uuu0EVcsHBxZFJgurQ+rTKS3qMHxR1GY2T8c2AJYd6vZoZ9q1rupaDjU0yT+Jc2XTyXkjeMA+Q==
+"@types/long@4.0.1":
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/@types/long/-/long-4.0.1.tgz#459c65fa1867dafe6a8f322c4c51695663cc55e9"
+  integrity sha512-5tXH6Bx/kNGd3MgffdmP4dy2Z+G4eaXw0SE81Tq3BNadtnMR5/ySMzX4SLEzHJzSmPNn4HIdpQsBvXMUykr58w==
 
 "@types/mocha@5.2.7":
   version "5.2.7"
   resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-5.2.7.tgz#315d570ccb56c53452ff8638738df60726d5b6ea"
   integrity sha512-NYrtPht0wGzhwe9+/idPaBB+TqkY9AhTvOLMkThm0IoEfLaiVQZwBwyJ5puCkO3AUCWrmcoePjp2mbFocKy4SQ==
 
-"@types/node-fetch@2.5.3":
-  version "2.5.3"
-  resolved "https://registry.yarnpkg.com/@types/node-fetch/-/node-fetch-2.5.3.tgz#b84127facd93642b1fb6439bc630ba0612e3ec50"
-  integrity sha512-X3TNlzZ7SuSwZsMkb5fV7GrPbVKvHc2iwHmslb8bIxRKWg2iqkfm3F/Wd79RhDpOXR7wCtKAwc5Y2JE6n/ibyw==
+"@types/node-fetch@2.5.4":
+  version "2.5.4"
+  resolved "https://registry.yarnpkg.com/@types/node-fetch/-/node-fetch-2.5.4.tgz#5245b6d8841fc3a6208b82291119bc11c4e0ce44"
+  integrity sha512-Oz6id++2qAOFuOlE1j0ouk1dzl3mmI1+qINPNBhi9nt/gVOz0G+13Ao6qjhdF0Ys+eOkhu6JnFmt38bR3H0POQ==
   dependencies:
     "@types/node" "*"
 
-"@types/node@*", "@types/node@^12.0.4", "@types/node@^12.12.14":
+"@types/node@*":
   version "12.12.14"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.12.14.tgz#1c1d6e3c75dba466e0326948d56e8bd72a1903d2"
   integrity sha512-u/SJDyXwuihpwjXy7hOOghagLEV1KdAST6syfnOk6QZAMzZuWZqXy5aYYZbh8Jdpd4escVFP0MvftHNDb9pruA==
 
-"@types/node@12.12.7":
-  version "12.12.7"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.12.7.tgz#01e4ea724d9e3bd50d90c11fd5980ba317d8fa11"
-  integrity sha512-E6Zn0rffhgd130zbCbAr/JdXfXkoOUFAKNs/rF8qnafSJ8KYaA/j3oz7dcwal+lYjLA7xvdd5J4wdYpCTlP8+w==
+"@types/node@13.5.0":
+  version "13.5.0"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-13.5.0.tgz#4e498dbf355795a611a87ae5ef811a8660d42662"
+  integrity sha512-Onhn+z72D2O2Pb2ql2xukJ55rglumsVo1H6Fmyi8mlU9SvKdBk/pUSUAiBY/d9bAOF7VVWajX3sths/+g6ZiAQ==
+
+"@types/node@13.5.1", "@types/node@^13.1.0":
+  version "13.5.1"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-13.5.1.tgz#6fae50892d1841f4b38b298e2f78fb68c5960cb9"
+  integrity sha512-Jj2W7VWQ2uM83f8Ls5ON9adxN98MvyJsMSASYFuSvrov8RMRY64Ayay7KV35ph1TSGIJ2gG9ZVDdEq3c3zaydA==
 
 "@types/secp256k1@3.5.0":
   version "3.5.0"
@@ -148,10 +179,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/sqlite3@3.1.5":
-  version "3.1.5"
-  resolved "https://registry.yarnpkg.com/@types/sqlite3/-/sqlite3-3.1.5.tgz#c9bbc94b8e8ed0654e1f8bc98716aba6030e9533"
-  integrity sha512-upsrd1zEYMa4Y+prurQ+vpo5SN63BUF6tOjeTv3ziF+9W9PHVh4/S5cy0qAqkHvmOEm/AZhEKd7V/0bR2udmFw==
+"@types/sqlite3@3.1.6":
+  version "3.1.6"
+  resolved "https://registry.yarnpkg.com/@types/sqlite3/-/sqlite3-3.1.6.tgz#554ce76f886eb187cfc86e2f0bb67cbac4f568ce"
+  integrity sha512-OBsK0KIGUICExQ/ZvnPY4cKx5Kz4NcrVyGTIvOL5y4ajXu7r++RfBajfpGfGDmDVCKcoCDX1dO84/oeyeITnxA==
   dependencies:
     "@types/node" "*"
 
@@ -353,6 +384,13 @@ aws4@^1.8.0:
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.9.0.tgz#24390e6ad61386b0a747265754d2a17219de862c"
   integrity sha512-Uvq6hVe90D0B2WEnUqtdgY1bATGz3mw33nH9Y+dmA+w5DHvUmBgkr5rM/KCHpCsiFNRUfokW/szpPPgMK2hm4A==
 
+axios@0.19.2:
+  version "0.19.2"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.19.2.tgz#3ea36c5d8818d0d5f8a8a97a6d36b86cdc00cb27"
+  integrity sha512-fjgm5MvRHLhx+osE2xoekY70AhARk3a6hkN+3Io1jc00jtquGvxYlKlsFUhmUET0V5te6CcZI7lcv2Ym61mjHA==
+  dependencies:
+    follow-redirects "1.5.10"
+
 axios@^0.19.0:
   version "0.19.0"
   resolved "https://registry.yarnpkg.com/axios/-/axios-0.19.0.tgz#8e09bff3d9122e133f7b8101c8fbdd00ed3d2ab8"
@@ -366,7 +404,7 @@ balanced-match@^1.0.0:
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-1.0.0.tgz#89b4d199ab2bee49de164ea02b89ce462d71b767"
   integrity sha1-ibTRmasr7kneFk6gK4nORi1xt2c=
 
-base-x@*, base-x@^3.0.2:
+base-x@^3.0.2, base-x@^3.0.6:
   version "3.0.7"
   resolved "https://registry.yarnpkg.com/base-x/-/base-x-3.0.7.tgz#1c5a7fafe8f66b4114063e8da102799d4e7c408f"
   integrity sha512-zAKJGuQPihXW22fkrfOclUUZXM2g92z5GzlSMHxhO6r6Qj+Nm0ccaGNBzDZojzwOMkpjAv4J0fOv1U4go+a4iw==
@@ -517,7 +555,7 @@ buffer-xor@^1.0.3:
   resolved "https://registry.yarnpkg.com/buffer-xor/-/buffer-xor-1.0.3.tgz#26e61ed1422fb70dd42e6e36729ed51d855fe8d9"
   integrity sha1-JuYe0UIvtw3ULm42cp7VHYVf6Nk=
 
-buffer@^5.4.3:
+buffer@5.4.3, buffer@^5.4.3:
   version "5.4.3"
   resolved "https://registry.yarnpkg.com/buffer/-/buffer-5.4.3.tgz#3fbc9c69eb713d323e3fc1a895eee0710c072115"
   integrity sha512-zvj65TkFeIt3i6aj5bIvJDzjjQQGs4o/sNoezg1F1kYap9Nu2jcUdpwzRSJTHMMzG0H7bZkn4rNQpImhuxWX2A==
@@ -2005,6 +2043,11 @@ js-yaml@^3.13.1:
     argparse "^1.0.7"
     esprima "^4.0.0"
 
+jsbi@3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/jsbi/-/jsbi-3.1.1.tgz#8ea18b3e08d102c6cc09acaa9a099921d775f4fa"
+  integrity sha512-+HQESPaV0mRiH614z4JPVPAftcRC2p53x92lySPzUzFwJbJTMpzHz8OYUkcXPN3fOcHUe0NdVcHnCtX/1+eCrA==
+
 jsbn@~0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/jsbn/-/jsbn-0.1.1.tgz#a5e654c2e5a2deb5f201d96cefbca80c0ef2f513"
@@ -3249,10 +3292,10 @@ sprintf-js@~1.0.2:
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
   integrity sha1-BOaSb2YolTVPPdAVIDYzuFcpfiw=
 
-sqlite3@4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/sqlite3/-/sqlite3-4.1.0.tgz#e051fb9c133be15726322a69e2e37ec560368380"
-  integrity sha512-RvqoKxq+8pDHsJo7aXxsFR18i+dU2Wp5o12qAJOV5LNcDt+fgJsc2QKKg3sIRfXrN9ZjzY1T7SNe/DFVqAXjaw==
+sqlite3@4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/sqlite3/-/sqlite3-4.1.1.tgz#539a42e476640796578e22d589b3283c28055242"
+  integrity sha512-CvT5XY+MWnn0HkbwVKJAyWEMfzpAPwnTiB3TobA5Mri44SrTovmmh499NPQP+gatkeOipqPlBLel7rn4E/PCQg==
   dependencies:
     nan "^2.12.1"
     node-pre-gyp "^0.11.0"
@@ -3441,12 +3484,12 @@ tar@^4:
     safe-buffer "^5.1.2"
     yallist "^3.0.3"
 
-telegraf@^3.34.1:
-  version "3.34.1"
-  resolved "https://registry.yarnpkg.com/telegraf/-/telegraf-3.34.1.tgz#69006497f8ea4badd724164ae913cef643726719"
-  integrity sha512-XKempUafzdi3TrPIA/jo2e7sRoLjE7oexgYTzQ7BeWHPnEi+Wh5EvOroOElSD9V4SCt9bub3HM352VK7dJS8Zw==
+telegraf@3.36.0:
+  version "3.36.0"
+  resolved "https://registry.yarnpkg.com/telegraf/-/telegraf-3.36.0.tgz#eab1160159df6033d3cb92ac990902523277822a"
+  integrity sha512-9o6AJKRiTm5vMWYI6WpTfBHzu4FMpWBNKxvnMxRds/cbMY9RnsVVjdi8i4bFFlfd+xbi73EbrnI3dybayryICA==
   dependencies:
-    "@types/node" "^12.0.4"
+    "@types/node" "^13.1.0"
     debug "^4.0.1"
     minimist "^1.2.0"
     module-alias "^2.2.2"
@@ -3519,16 +3562,16 @@ triple-beam@^1.2.0, triple-beam@^1.3.0:
   resolved "https://registry.yarnpkg.com/triple-beam/-/triple-beam-1.3.0.tgz#a595214c7298db8339eeeee083e4d10bd8cb8dd9"
   integrity sha512-XrHUvV5HpdLmIj4uVMxHggLbFSZYIn7HEWsqePZcI50pco+MPqJ50wMGY794X7AOOhxOBAjbkqfAbEe/QMp2Lw==
 
-ts-node@^8.5.4:
-  version "8.5.4"
-  resolved "https://registry.yarnpkg.com/ts-node/-/ts-node-8.5.4.tgz#a152add11fa19c221d0b48962c210cf467262ab2"
-  integrity sha512-izbVCRV68EasEPQ8MSIGBNK9dc/4sYJJKYA+IarMQct1RtEot6Xp0bXuClsbUSnKpg50ho+aOAx8en5c+y4OFw==
+ts-node@8.6.2:
+  version "8.6.2"
+  resolved "https://registry.yarnpkg.com/ts-node/-/ts-node-8.6.2.tgz#7419a01391a818fbafa6f826a33c1a13e9464e35"
+  integrity sha512-4mZEbofxGqLL2RImpe3zMJukvEvcO1XP8bj8ozBPySdCUXEcU5cIRwR0aM3R+VoZq7iXc8N86NC0FspGRqP4gg==
   dependencies:
     arg "^4.1.0"
     diff "^4.0.1"
     make-error "^1.1.1"
     source-map-support "^0.5.6"
-    yn "^3.0.0"
+    yn "3.1.1"
 
 tslib@^1.9.0:
   version "1.10.0"
@@ -3554,10 +3597,10 @@ tweetnacl-util@0.15.0:
   resolved "https://registry.yarnpkg.com/tweetnacl-util/-/tweetnacl-util-0.15.0.tgz#4576c1cee5e2d63d207fee52f1ba02819480bc75"
   integrity sha1-RXbBzuXi1j0gf+5S8boCgZSAvHU=
 
-tweetnacl@1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/tweetnacl/-/tweetnacl-1.0.1.tgz#2594d42da73cd036bd0d2a54683dd35a6b55ca17"
-  integrity sha512-kcoMoKTPYnoeS50tzoqjPY3Uv9axeuuFAZY9M/9zFnhoVvRfxz9K29IMPD7jGmt2c8SW7i3gT9WqDl2+nV7p4A==
+tweetnacl@1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/tweetnacl/-/tweetnacl-1.0.2.tgz#39fba8d1f7a34706a3fc1fd8c04afcad7bb9e689"
+  integrity sha512-+8aPRjmXgf1VqvyxSlBUzKzeYqVS9Ai8vZ28g+mL7dNQl1jlUTCMDZnvNQdAS1xTywMkIXwJsfipsR/6s2+syw==
 
 tweetnacl@^0.14.3, tweetnacl@~0.14.0:
   version "0.14.5"
@@ -3576,10 +3619,10 @@ type-fest@^0.8.1:
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-0.8.1.tgz#09e249ebde851d3b1e48d27c105444667f17b83d"
   integrity sha512-4dbzIzqvjtgiM5rw1k5rEHtBANKmdudhGyBEajN01fEyhaAIhsoKNy6y7+IN93IfpFtwY9iqi7kD+xwKhQsNJA==
 
-typescript@^3.7.2:
-  version "3.7.2"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.7.2.tgz#27e489b95fa5909445e9fef5ee48d81697ad18fb"
-  integrity sha512-ml7V7JfiN2Xwvcer+XAf2csGO1bPBdRbFCkYBczNZggrBZ9c7G3riSUeJmqEU5uOtXNPMhE3n+R4FA/3YOAWOQ==
+typescript@3.7.5:
+  version "3.7.5"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.7.5.tgz#0692e21f65fd4108b9330238aac11dd2e177a1ae"
+  integrity sha512-/P5lkRXkWHNAbcJIiHPfRoKqyd7bsyCma1hZNUGfn20qm64T6ZBlrzprymeu918H+mB/0rIg2gGK/BXkhhYgBw==
 
 union-value@^1.0.0:
   version "1.0.1"
@@ -3819,7 +3862,7 @@ yargs@^13.3.0:
     y18n "^4.0.0"
     yargs-parser "^13.1.1"
 
-yn@^3.0.0:
+yn@3.1.1:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/yn/-/yn-3.1.1.tgz#1e87401a09d767c1d5eab26a6e4c185182d2eb50"
   integrity sha512-Ux4ygGWsu2c7isFWe8Yu1YluJmqVhxqK2cLXNQA5AcC3QfbGNpM7fu0Y8b/z16pXLnFxZYvWhd3fhBY9DLmC6Q==
