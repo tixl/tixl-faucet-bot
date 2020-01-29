@@ -1,6 +1,6 @@
-import { getBlockchain } from './gateway-helper';
-import { Blockchain } from '@tixl/tixl-ledger/lib/types/src/Blockchain';
+import { Blockchain } from '@tixl/tixl-types';
 
+import { getBlockchain } from './gateway-helper';
 import { log } from './logger';
 
 let busy = false;

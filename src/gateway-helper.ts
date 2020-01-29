@@ -1,8 +1,8 @@
 import axios from 'axios';
 import highwayhash from 'highwayhash';
-import { Transaction } from '@tixl/tixl-ledger/lib/src/Transaction';
+import { Transaction, Blockchain } from '@tixl/tixl-types';
 import { utils } from '@tixl/tixl-ledger';
-import { Blockchain } from '@tixl/tixl-ledger/lib/types/src/Blockchain';
+
 import { log } from './logger';
 
 const sendUrl = process.env.GATEWAY_URL + '/transaction';
