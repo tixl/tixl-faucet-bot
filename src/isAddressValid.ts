@@ -1,3 +1,3 @@
 export const isAddressValid = (address: string) => {
-  return address.length === 1372;
+  return address.length === 45;
 };

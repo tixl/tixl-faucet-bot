@@ -5,6 +5,7 @@ const { isAddressValid } = require('./isAddressValid');
 const { canUserReceive, updateOrCreateUserTimestamp } = require('./fauna');
 import { log, configureLogger } from './logger';
 import { startLifeSignal } from './lifeSignal';
+import getNtruPublicKey from './getNtruPublicKey';
 
 if (process.env.NODE_ENV === 'production') {
   configureLogger(process.env.LOGDNA_KEY, process.env.LOGDNA_APP);
@@ -24,6 +25,7 @@ bot.on('text', async (ctx: any) => {
   const username = ctx.message.from.username;
   log.info('User attempts to get funds', { address, username });
   const canReceive = await canUserReceive(username);
+
   if (isAdmin(username) || canReceive) {
     if (isAddressValid(address)) {
       log.info('User is being sent funds', { address, username });
@@ -33,7 +35,15 @@ bot.on('text', async (ctx: any) => {
           parse_mode: 'Markdown',
         });
 
-        const { sendAmount, hash } = await sendFromGenesis(address);
+        const ntruPublicKey = await getNtruPublicKey(address);
+
+        if (!ntruPublicKey) {
+          log.info('Public signature key has no corresponding blockchain');
+          ctx.reply(`There does not seem to be a blockchain for this address.`);
+          return;
+        }
+
+        const { sendAmount, hash } = await sendFromGenesis(ntruPublicKey);
         const txlAmount = sendAmount / BigInt(Math.pow(10, 7));
 
         ctx.reply(
