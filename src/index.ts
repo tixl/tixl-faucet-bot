@@ -11,7 +11,7 @@ if (process.env.NODE_ENV === 'production') {
   configureLogger(process.env.LOGDNA_KEY, process.env.LOGDNA_APP);
   startLifeSignal();
 }
-const admins: string[] = ['bstrehl', 'ceichinger', 'seb0zz', 'CorentinCl', 'Moecxck'];
+const admins: string[] = ['bstrehl', 'ceichinger', 'seb0zz', 'CorentinCl', 'Moecxck', 'tam_mo'];
 const isAdmin = (username: string) => admins.some(a => a === username);
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
