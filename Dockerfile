@@ -14,4 +14,4 @@ ADD src ./src
 ADD typings ./typings
 RUN yarn build
 
-CMD ["npx", "forever", "./lib/index.js" ]
+CMD ["npx", "forever", "./lib" ]
