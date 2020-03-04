@@ -1,5 +1,5 @@
 # tixl-faucet-bot
 
-Creates a telegram bot, that sends funds to users. 
+Telegram bot, that sends TXL to users (Testnet only). 
 
- t.me/tixl_testnetrc1_faucet_bot
+ [Open in Telegram](https://t.me/tixl_testnetrc1_faucet_bot)
