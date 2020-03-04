@@ -25,15 +25,15 @@
   dependencies:
     regenerator-runtime "^0.13.2"
 
-"@tixl/tixl-crypto@1.6.0":
-  version "1.6.0"
-  resolved "https://npm.pkg.github.com/download/@tixl/tixl-crypto/1.6.0/0b66482a34e865cc25543c1894b7965c73483056584548fa18b123175382ef0e#eeb4187e8adb6c30237ecd08097d036e75803ecb"
-  integrity sha512-OeW8WoRDVR0vOXJ0eJONRSzv/cNUgaBd/Hnb3J4+Ple1rpSvQzV16dm0bW4+qTn74eyhg4CmZNJrwh0MO3VbDg==
+"@tixl/tixl-crypto@1.8.0":
+  version "1.8.0"
+  resolved "https://npm.pkg.github.com/download/@tixl/tixl-crypto/1.8.0/96ac820492f05b0fcf9af0020cb730289d426f152b5d09f29036409b942b7d20#b84951c435e483c1437c78e179b9fe7bdb8bd5e3"
+  integrity sha512-MOwdr198Yvg9PZ/9F9rcMIKdk8JbE52H1260/HC6HuWOAr3/4yLRl2243mYdkyaWVUjhiF/au2A8+VoPdblSZA==
   dependencies:
     "@tixl/tixl-ntru" "0.1.11"
     "@tixl/tixl-pedersen-commitments" "2.1.0"
-    "@tixl/tixl-types" "0.3.0"
-    "@tixl/tixl-workflows" "0.3.0"
+    "@tixl/tixl-types" "0.5.0"
+    "@tixl/tixl-workflows" "0.5.0"
     "@types/bs58" "4.0.1"
     "@types/chai" "4.2.8"
     "@types/create-hash" "1.2.2"
@@ -52,13 +52,13 @@
     tweetnacl-blake2b "1.0.1"
     tweetnacl-util "0.15.0"
 
-"@tixl/tixl-ledger@1.11.0":
-  version "1.11.0"
-  resolved "https://npm.pkg.github.com/download/@tixl/tixl-ledger/1.11.0/ed98ab28b64ca85fb4c755f64d1c077eb7b5b1ffd4a504240a56421ce7b0acaa#d7cefedc922276c15f6822e97a84a230f9d21bf6"
-  integrity sha512-dH2WLj30zgaV6VDxTbUpYyVGHjebPw7vhG1zevJwtQTI4LGagjRCXBRh6YVKkL36yHl9k6tBq0ckJ4IU4hNm/g==
+"@tixl/tixl-ledger@^1.13.1":
+  version "1.13.1"
+  resolved "https://npm.pkg.github.com/download/@tixl/tixl-ledger/1.13.1/ed45c769d05941ddf2d7365265d5df3c0d9fca96c3f5f2db26cc6826c7bf7083#753e7b48cb74b2d0179b2bb2ca2a2091cfa0c093"
+  integrity sha512-c9Hc6WJwI8FPy33vWrurVQvzejpMgsRf2rJnca0Zrur5XpZzdTdZDih4fWPU8Qy2TZp8qnaA3/Ts+2jBDRIl7g==
   dependencies:
-    "@tixl/tixl-crypto" "1.6.0"
-    "@tixl/tixl-types" "0.3.0"
+    "@tixl/tixl-crypto" "1.8.0"
+    "@tixl/tixl-types" "0.5.0"
     "@types/chai" "4.2.8"
     "@types/debug" "4.1.5"
     "@types/mocha" "7.0.1"
@@ -87,21 +87,21 @@
     long "^4.0.0"
     randombytes "^2.1.0"
 
-"@tixl/tixl-types@0.3.0":
-  version "0.3.0"
-  resolved "https://npm.pkg.github.com/download/@tixl/tixl-types/0.3.0/f63d56ce64d0bd7a014c4d2047458658f39e4f8060933cdf304711ca8c189a74#a0c5cd12a34383d65d09e2277a0264218bd998e1"
-  integrity sha512-EN6sQRT5hQnTibGIO711kfIH8Hofd8KlyVZesDVn756pkTeUdJcl0JFcApTCpVJ7CJXgO/+AI9cn2x5IskW5Rg==
+"@tixl/tixl-types@0.5.0", "@tixl/tixl-types@^0.5.0":
+  version "0.5.0"
+  resolved "https://npm.pkg.github.com/download/@tixl/tixl-types/0.5.0/ffc4da750ea4ffdde1707a9d10587a693c714b25dcc4cd19e71a0e4bb82b1b49#d785525b7c3873b9be251a17309de642801ccd44"
+  integrity sha512-Gm3uZpjC9gtQEbdY/laobMjUZ4pB0PaSG3aReQOEUf5YYj7hhYlNxgPxlH+NBRpQ6XaOd5WdO2CocDkYrXvg5g==
   dependencies:
     jsbi "3.1.1"
 
-"@tixl/tixl-workflows@0.3.0":
-  version "0.3.0"
-  resolved "https://npm.pkg.github.com/download/@tixl/tixl-workflows/0.3.0/4f0f12c05c1ae01ee3a86bfcd576d9d24b3edd0494179b481387aeb33753b13c#4bbd5856046edc114c86df59d8c6de5d96968734"
-  integrity sha512-Tno0XUAJ8D3RNnHeNEKg/zund/+QG+u/GIa9Q9XBK6mQS+gEzgoQJee2JihOS+caQTsKIaf8hJUwnY/CpZJTEg==
+"@tixl/tixl-workflows@0.5.0":
+  version "0.5.0"
+  resolved "https://npm.pkg.github.com/download/@tixl/tixl-workflows/0.5.0/a1f2adcaed70806dd5f31e02e6df71a18b4d0e1a187e077edda49fcbfe7c2469#ae4a37bb38d03d57031b9edf90c8d9abc49d47aa"
+  integrity sha512-neliXlF0kfbRhsCvgEHb0KqdO5lRgXDqRKYVtHbtVNKd/sbAteNyKk7dDDAyPZ9bd69J5gTTYudUnK2v/bqA9Q==
   dependencies:
-    "@tixl/tixl-types" "0.3.0"
+    "@tixl/tixl-types" "0.5.0"
     "@types/bs58" "4.0.1"
-    "@types/node" "13.5.2"
+    "@types/node" "13.7.0"
     "@types/secp256k1" "3.5.0"
     bs58 "4.0.1"
     buffer "5.4.3"
@@ -169,6 +169,11 @@
   version "13.5.2"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-13.5.2.tgz#3de53b55fd39efc428a901a0f6db31f761cfa131"
   integrity sha512-Fr6a47c84PRLfd7M7u3/hEknyUdQrrBA6VoPmkze0tcflhU5UnpWEX2kn12ktA/lb+MNHSqFlSiPHIHsaErTPA==
+
+"@types/node@13.7.0":
+  version "13.7.0"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-13.7.0.tgz#b417deda18cf8400f278733499ad5547ed1abec4"
+  integrity sha512-GnZbirvmqZUzMgkFn70c74OQpTTUcCzlhQliTzYjQMqg+hVKcDnxdL19Ne3UdYzdMA/+W3eb646FWn/ZaT1NfQ==
 
 "@types/node@^13.1.0":
   version "13.5.1"

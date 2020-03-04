@@ -8,8 +8,8 @@
     "start": "ts-node src/index.ts"
   },
   "dependencies": {
-    "@tixl/tixl-ledger": "1.11.0",
-    "@tixl/tixl-types": "0.3.0",
+    "@tixl/tixl-ledger": "^1.13.1",
+    "@tixl/tixl-types": "^0.5.0",
     "@types/node": "13.5.2",
     "axios": "0.19.2",
     "dotenv": "^8.2.0",
