@@ -1,6 +1,6 @@
 name: Publish Docker
 
-on: 
+on:
   push:
     branches:
       - master
@@ -9,18 +9,35 @@ jobs:
   build-and-push:
     runs-on: ubuntu-latest
     steps:
-    - name: Fix up git URLs
-      run: echo -e '[url "https://github.com/"]\n  insteadOf = "git@github.com:"' >> ~/.gitconfig
-    - uses: actions/checkout@v1
-      with:
-        token: ${{ secrets.GITHUB_ACTIONS_TOKEN }}
-        submodules: true
-    - uses: tixl/aws-ecr-action@master
-      with:
-        access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        account_id: ${{ secrets.AWS_ACCOUNT_ID }}
-        repo: tixl/faucet-bot
-        region: eu-central-1
-        tags: latest,${{ github.sha }}
-        extra_build_args: --build-arg GITHUB_TOKEN=${{ secrets.GITHUB_ACTIONS_TOKEN }}
+      - name: Slack Notify Begin
+        uses: rtCamp/action-slack-notify@v1.0.0
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_MESSAGE: '🔃 Build: Faucet Bot (${{ github.sha }})'
+      - name: Fix up git URLs
+        run: echo -e '[url "https://github.com/"]\n  insteadOf = "git@github.com:"' >> ~/.gitconfig
+      - uses: actions/checkout@v1
+        with:
+          token: ${{ secrets.GITHUB_ACTIONS_TOKEN }}
+          submodules: true
+      - uses: tixl/aws-ecr-action@master
+        with:
+          access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          account_id: ${{ secrets.AWS_ACCOUNT_ID }}
+          repo: tixl/faucet-bot
+          region: eu-central-1
+          tags: latest,${{ github.sha }}
+          extra_build_args: --build-arg GITHUB_TOKEN=${{ secrets.GITHUB_ACTIONS_TOKEN }}
+      - name: Slack Notify Success
+        if: success()
+        uses: rtCamp/action-slack-notify@v1.0.0
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_MESSAGE: '✅ Build: Faucet Bot (${{ github.sha }})'
+      - name: Slack Notify Failure
+        if: failure()
+        uses: rtCamp/action-slack-notify@v1.0.0
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_MESSAGE: '❌ Build: Faucet Bot (${{ github.sha }})'
