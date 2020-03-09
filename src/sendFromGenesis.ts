@@ -1,53 +1,42 @@
 import { utils } from '@tixl/tixl-ledger';
+import { AssetSymbol, Block } from '@tixl/tixl-types';
 
 import { sendTx } from './gateway-helper';
 import { getSerialBlockchain, setLatestBlockchain } from './serialBlockchain';
 import { log } from './logger';
-import { AssetSymbol, Block } from '@tixl/tixl-types';
 
 export const sendFromGenesis = async (address: string): Promise<{ sendAmount: bigint; hash: string }> => {
-  try {
-    log.info('Call send from genesis');
-    const genChain = await getSerialBlockchain();
-    log.info('Mark 1');
-    const genLeaf = genChain && genChain.leaf();
-    log.info('Mark 2');
+  const genChain = await getSerialBlockchain();
+  const genLeaf = genChain && genChain.leaf();
 
-    if (!genChain || !genLeaf) throw 'no genesis chain found';
+  if (!genChain || !genLeaf) throw 'no genesis chain found';
 
-    await utils.decryptSender(genLeaf, process.env.GEN_AES || '', true);
-    log.info('Mark 3');
+  const leaf = { ...genLeaf } as Block;
 
-    await utils.decryptReceiver(genLeaf, process.env.GEN_NTRU_PRIV || '');
-    log.info('Mark 4');
+  await utils.decryptSender(leaf, process.env.GEN_AES || '', true);
+  await utils.decryptReceiver(leaf, process.env.GEN_NTRU_PRIV || '');
 
-    const rndTxl = Math.floor(Math.random() * 5000000) + 1; // rng between 1..5,000,000
-    const sendAmount = BigInt(rndTxl) * BigInt(Math.pow(10, 4));
-    const newGenBalance = BigInt(genLeaf.senderBalance) - sendAmount;
+  const rndTxl = Math.floor(Math.random() * 5000000) + 1; // rng between 1..5,000,000
+  const sendAmount = BigInt(rndTxl) * BigInt(Math.pow(10, 4));
+  const newGenBalance = BigInt(leaf.senderBalance) - sendAmount;
 
-    log.info('Current genesis balance', { balance: String(genLeaf.senderBalance) });
+  log.info('Current genesis balance', { balance: String(leaf.senderBalance) });
 
-    const send = await utils.createSendBlock(
-      genChain.leaf() as Block,
-      genChain.publicSig,
-      sendAmount,
-      newGenBalance,
-      AssetSymbol.TXL,
-      process.env.GEN_SIG_PRIV,
-      address,
-      process.env.GEN_AES,
-    );
-    send.tx.slot = 0;
+  const send = await utils.createSendBlock(
+    leaf,
+    genChain.publicSig,
+    sendAmount,
+    newGenBalance,
+    AssetSymbol.TXL,
+    process.env.GEN_SIG_PRIV,
+    address,
+    process.env.GEN_AES,
+  );
 
-    console.log(send);
+  const hash = await sendTx(send.tx);
 
-    const hash = await sendTx(send.tx);
+  genChain.addBlock(send.block);
+  setLatestBlockchain(genChain);
 
-    setLatestBlockchain(genChain);
-
-    return { sendAmount, hash };
-  } catch (error) {
-    log.error('Error in send from genesis', error);
-    return error;
-  }
+  return { sendAmount, hash };
 };

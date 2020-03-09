@@ -11,6 +11,7 @@ if (process.env.NODE_ENV === 'production') {
   configureLogger(process.env.LOGDNA_KEY, process.env.LOGDNA_APP);
   startLifeSignal();
 }
+
 const admins: string[] = ['bstrehl', 'ceichinger', 'seb0zz', 'CorentinCl', 'Moecxck', 'tam_mo'];
 const isAdmin = (username: string) => admins.some(a => a === username);
 
@@ -47,12 +48,14 @@ bot.on('text', async (ctx: any) => {
           const { sendAmount, hash } = await sendFromGenesis(ntruPublicKey);
           const txlAmount = sendAmount / BigInt(Math.pow(10, 7));
 
+          log.info('created send block', { amount: String(sendAmount), hash });
+
           ctx.reply(
             `I just sent you ~${txlAmount} TXL, you should receive it soon. The hash of the transaction is ${hash}.`,
           );
           ctx.reply(`You can track the transaction on https://explorer.tixl.dev`);
 
-          log.info('User got confirmation', { address, username, amount: String(sendAmount), hash });
+          log.info('User got confirmation', { address, username });
           await updateOrCreateUserTimestamp(username);
         } catch (error) {
           ctx.reply(`Sorry, there was an error, please try again later.`);
