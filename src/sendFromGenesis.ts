@@ -6,10 +6,10 @@ import { getSerialBlockchain, setLatestBlockchain } from './serialBlockchain';
 import { log } from './logger';
 
 export const sendFromGenesis = async (address: string): Promise<{ sendAmount: bigint; signature: Signature }> => {
-  const _genChain = await getSerialBlockchain();
+  await getSerialBlockchain();
 
   // fetch a fresh version of the genesis chain to have a chance against the wallet bots
-  const genChain = await getBlockchain(_genChain.publicSig);
+  const genChain = await getBlockchain(process.env.GEN_SIG_PUB || '');
 
   const genLeaf = genChain && genChain.leaf();
 
