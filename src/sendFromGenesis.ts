@@ -1,11 +1,11 @@
-import { utils } from '@tixl/tixl-ledger';
-import { AssetSymbol, Block } from '@tixl/tixl-types';
+import { AssetSymbol, Block, Signature } from '@tixl/tixl-types';
+import { createSendBlock, decryptSender, decryptReceiver } from '@tixl/tixl-crypto';
 
 import { sendTx, getBlockchain } from './gateway-helper';
 import { getSerialBlockchain, setLatestBlockchain } from './serialBlockchain';
 import { log } from './logger';
 
-export const sendFromGenesis = async (address: string): Promise<{ sendAmount: bigint; hash: string }> => {
+export const sendFromGenesis = async (address: string): Promise<{ sendAmount: bigint; signature: Signature }> => {
   const _genChain = await getSerialBlockchain();
 
   // fetch a fresh version of the genesis chain to have a chance against the wallet bots
@@ -15,19 +15,17 @@ export const sendFromGenesis = async (address: string): Promise<{ sendAmount: bi
 
   if (!genChain || !genLeaf) throw 'no genesis chain found';
 
-  const leaf = { ...genLeaf } as Block;
-
-  await utils.decryptSender(leaf, process.env.GEN_AES || '', true);
-  await utils.decryptReceiver(leaf, process.env.GEN_NTRU_PRIV || '');
+  await decryptSender(genLeaf, process.env.GEN_AES || '');
+  await decryptReceiver(genLeaf, process.env.GEN_NTRU_PRIV || '');
 
   const rndTxl = Math.floor(Math.random() * 5000000) + 1; // rng between 1..5,000,000
   const sendAmount = BigInt(rndTxl) * BigInt(Math.pow(10, 4));
-  const newGenBalance = BigInt(leaf.senderBalance) - sendAmount;
+  const newGenBalance = BigInt(genLeaf.senderBalance) - sendAmount;
 
-  log.info('Current genesis balance', { balance: String(leaf.senderBalance) });
+  log.info('Current genesis balance', { balance: String(genLeaf.senderBalance) });
 
-  const send = await utils.createSendBlock(
-    leaf,
+  const send = await createSendBlock(
+    genChain.leaf() as Block,
     genChain.publicSig,
     sendAmount,
     newGenBalance,
@@ -37,10 +35,12 @@ export const sendFromGenesis = async (address: string): Promise<{ sendAmount: bi
     process.env.GEN_AES,
   );
 
-  const hash = await sendTx(send.tx);
+  await sendTx(send.tx);
+
+  const signature = send.block.signature;
 
   genChain.addBlock(send.block);
   setLatestBlockchain(genChain);
 
-  return { sendAmount, hash };
+  return { sendAmount, signature };
 };

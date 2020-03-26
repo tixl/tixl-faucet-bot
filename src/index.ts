@@ -3,6 +3,7 @@ const Telegraf = require('telegraf');
 const { sendFromGenesis } = require('./sendFromGenesis');
 const { isAddressValid } = require('./isAddressValid');
 const { canUserReceive, updateOrCreateUserTimestamp } = require('./fauna');
+import eh from 'hash-emoji';
 import { log, configureLogger } from './logger';
 import { startLifeSignal } from './lifeSignal';
 import getNtruPublicKey from './getNtruPublicKey';
@@ -45,15 +46,20 @@ bot.on('text', async (ctx: any) => {
             return;
           }
 
-          const { sendAmount, hash } = await sendFromGenesis(ntruPublicKey);
+          const { sendAmount, signature } = await sendFromGenesis(ntruPublicKey);
           const txlAmount = sendAmount / BigInt(Math.pow(10, 7));
 
-          log.info('created send block', { amount: String(sendAmount), hash });
+          log.info('created send block', { amount: String(sendAmount), signature });
+
+          const emojiSig = `${eh(signature, 3)} (${String(signature).substring(0, 16)}...)`;
 
           ctx.reply(
-            `I just sent you ~${txlAmount} TXL, you should receive it soon. The hash of the transaction is ${hash}.`,
+            `I just sent you ~${txlAmount} TXL, you should receive it soon. The signature of the send block is:
+
+${emojiSig}
+
+You can track the transaction on https://explorer.tixl.dev`,
           );
-          ctx.reply(`You can track the transaction on https://explorer.tixl.dev`);
 
           log.info('User got confirmation', { address, username });
           await updateOrCreateUserTimestamp(username);
