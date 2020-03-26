@@ -1,6 +1,6 @@
 import axios from 'axios';
 import highwayhash from 'highwayhash';
-import { Transaction, Blockchain } from '@tixl/tixl-types';
+import { Transaction, Blockchain, SigPublicKey } from '@tixl/tixl-types';
 import { utils } from '@tixl/tixl-ledger';
 
 import { log } from './logger';
@@ -13,7 +13,7 @@ export function hashVal(val: string) {
   return highwayhash.asHexString(key, Buffer.from(val));
 }
 
-export async function getBlockchain(signaturePublicKey: string): Promise<Blockchain | undefined> {
+export async function getBlockchain(signaturePublicKey: SigPublicKey): Promise<Blockchain | undefined> {
   const res = await axios.get(chainUrl + `?signaturePublicKey=${signaturePublicKey}`, {
     headers: {
       'content-type': 'application/json',

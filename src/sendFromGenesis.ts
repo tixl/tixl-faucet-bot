@@ -1,12 +1,16 @@
 import { utils } from '@tixl/tixl-ledger';
 import { AssetSymbol, Block } from '@tixl/tixl-types';
 
-import { sendTx } from './gateway-helper';
+import { sendTx, getBlockchain } from './gateway-helper';
 import { getSerialBlockchain, setLatestBlockchain } from './serialBlockchain';
 import { log } from './logger';
 
 export const sendFromGenesis = async (address: string): Promise<{ sendAmount: bigint; hash: string }> => {
-  const genChain = await getSerialBlockchain();
+  const _genChain = await getSerialBlockchain();
+
+  // fetch a fresh version of the genesis chain to have a chance against the wallet bots
+  const genChain = await getBlockchain(_genChain.publicSig);
+
   const genLeaf = genChain && genChain.leaf();
 
   if (!genChain || !genLeaf) throw 'no genesis chain found';
