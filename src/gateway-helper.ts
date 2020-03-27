@@ -53,7 +53,7 @@ export async function getBlockchain(signaturePublicKey: SigPublicKey): Promise<B
 
 export async function sendTx(transaction: Transaction) {
   log.info('sending tx to gateway', { transaction });
-
+  console.log(JSON.stringify(transaction, null, 2));
   const res = await axios.post(sendUrl, {
     transaction,
   });
