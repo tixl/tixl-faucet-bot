@@ -23,7 +23,7 @@ export async function getBlock(signature: Signature): Promise<Block | undefined>
   });
 
   if (res.status !== 200) {
-    log.error('FAUCET BOT cannot reach gateway', { statusText: res.statusText });
+    log.error('cannot reach gateway', { statusText: res.statusText });
     return;
   }
 
@@ -42,7 +42,7 @@ export async function getBlockchain(signaturePublicKey: SigPublicKey): Promise<B
   });
 
   if (res.status !== 200) {
-    log.error('FAUCET BOT cannot reach gateway', { statusText: res.statusText });
+    log.error('cannot reach gateway', { statusText: res.statusText });
     return;
   }
 
@@ -52,6 +52,8 @@ export async function getBlockchain(signaturePublicKey: SigPublicKey): Promise<B
 }
 
 export async function sendTx(transaction: Transaction) {
+  log.info('sending tx to gateway', { transaction });
+
   const res = await axios.post(sendUrl, {
     transaction,
   });
@@ -60,7 +62,7 @@ export async function sendTx(transaction: Transaction) {
     const hash = res.data && res.data.hash;
 
     if (hash) {
-      log.info('FAUCET BOT send tx; hash: ' + hash);
+      log.info('send tx; hash: ' + hash);
       return hash;
     }
 
