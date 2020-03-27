@@ -13,6 +13,7 @@ let latestBlockchain: Blockchain | undefined = undefined;
 export async function getSerialBlockchain(): Promise<void> {
   return new Promise(resolve => {
     let myTurn = false;
+    let turnCounter = 0;
 
     const interval = setInterval(async () => {
       // claim the slot
@@ -40,8 +41,14 @@ export async function getSerialBlockchain(): Promise<void> {
         return sendNextBlock();
       }
 
+      // if the faucet bot created a rejected send block, skip this request after some tries
+      if (turnCounter >= 5) {
+        return sendNextBlock();
+      }
+
       // network is not up to date simply try again in the next interval
-    }, 5000);
+      turnCounter++;
+    }, 2000);
 
     const sendNextBlock = () => {
       clearInterval(interval);
