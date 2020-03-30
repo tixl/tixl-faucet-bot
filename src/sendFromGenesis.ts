@@ -15,7 +15,7 @@ export const sendFromGenesis = async (address: string): Promise<{ sendAmount: bi
 
   if (!genChain || !genLeaf) throw 'no genesis chain found';
 
-  await decryptSender(genLeaf, process.env.GEN_AES || '');
+  await decryptSender(genLeaf, process.env.GEN_AES || '', { forceDecryptBF: true });
   await decryptReceiver(genLeaf, process.env.GEN_NTRU_PRIV || '');
 
   const rndTxl = Math.floor(Math.random() * 5000000) + 1; // rng between 1..5,000,000
