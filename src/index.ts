@@ -3,10 +3,12 @@ const Telegraf = require('telegraf');
 const { sendFromGenesis } = require('./sendFromGenesis');
 const { isAddressValid } = require('./isAddressValid');
 const { canUserReceive, updateOrCreateUserTimestamp } = require('./fauna');
+
 import eh from 'hash-emoji';
 import { log, configureLogger } from './logger';
 import { startLifeSignal } from './lifeSignal';
 import getNtruPublicKey from './getNtruPublicKey';
+import { queue } from './sendFromGenesis';
 
 if (process.env.NODE_ENV === 'production') {
   configureLogger(process.env.LOGDNA_KEY, process.env.LOGDNA_APP);
@@ -46,23 +48,32 @@ bot.on('text', async (ctx: any) => {
             return;
           }
 
-          const { sendAmount, signature } = await sendFromGenesis(ntruPublicKey);
-          const txlAmount = sendAmount / BigInt(Math.pow(10, 7));
+          const queueLength = queue.getQueueLength();
+          log.info('adding send job to queue', { queueLength });
 
-          log.info('created send block', { amount: String(sendAmount), signature });
+          if (queueLength >= 1) {
+            ctx.reply(`There is a lot going on. You are on #${queueLength + 1} in the queue.`);
+          }
 
-          const emojiSig = `${eh(signature, 3)} (${String(signature).substring(0, 16)}...)`;
+          process.nextTick(async () => {
+            const { sendAmount, signature } = await sendFromGenesis(ntruPublicKey);
+            const txlAmount = sendAmount / BigInt(Math.pow(10, 7));
 
-          ctx.reply(
-            `I just sent you ~${txlAmount} TXL, you should receive it soon. The signature of the send block is:
+            log.info('created send block', { amount: String(sendAmount), signature });
 
-${emojiSig}
+            const emojiSig = `${eh(signature, 3)} (${String(signature).substring(0, 16)}...)`;
 
-You can track the transaction on https://explorer.tixl.dev`,
-          );
+            ctx.reply(
+              `I just sent you ~${txlAmount} TXL, you should receive it soon. The signature of the send block is:
+              
+              ${emojiSig}
+              
+              You can track the transaction on https://explorer.tixl.dev`,
+            );
 
-          log.info('User got confirmation', { address, username });
-          await updateOrCreateUserTimestamp(username);
+            log.info('User got confirmation', { address, username });
+            await updateOrCreateUserTimestamp(username);
+          });
         } catch (error) {
           ctx.reply(`Sorry, there was an error, please try again later.`);
           log.error(error);
