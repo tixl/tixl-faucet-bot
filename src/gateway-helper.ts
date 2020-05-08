@@ -16,22 +16,38 @@ const chainUrl = process.env.GATEWAY_URL + '/blockchain';
 const blockUrl = process.env.GATEWAY_URL + '/block';
 
 export async function getBlock(signature: Signature): Promise<Block | undefined> {
-  const res = await axios.get(blockUrl + `?signature=${signature}`, {
-    headers: {
-      'content-type': 'application/json',
-    },
-  });
+  return axios
+    .get(blockUrl + `?signature=${signature}`, {
+      headers: {
+        'content-type': 'application/json',
+      },
+    })
+    .then(res => {
+      if (res && res.data && res.data.block) {
+        const block = fromBlockObject(res.data.block);
 
-  if (res.status !== 200) {
-    log.error('cannot reach gateway', { statusText: res.statusText });
-    return;
-  }
+        return block;
+      }
 
-  if (res && res.data && res.data.block) {
-    const block = fromBlockObject(res.data.block);
+      return undefined;
+    })
+    .catch(error => {
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        // that is OK
+      } else if (error.request) {
+        // The request was made but no response was received
+        // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+        // http.ClientRequest in node.js
+        log.error('cannot reach gateway', error.message);
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        log.error('Error', error.message);
+      }
 
-    return block;
-  }
+      return undefined;
+    });
 }
 
 export async function getBlockchain(signaturePublicKey: SigPublicKey): Promise<Blockchain | undefined> {
@@ -52,8 +68,8 @@ export async function getBlockchain(signaturePublicKey: SigPublicKey): Promise<B
 }
 
 export async function sendTx(transaction: Transaction) {
-  log.info('sending tx to gateway', { transaction });
-  console.log(JSON.stringify(transaction, null, 2));
+  log.info('sending tx to gateway', { publicSig: transaction.publicSig });
+
   const res = await axios.post(sendUrl, {
     transaction,
   });
