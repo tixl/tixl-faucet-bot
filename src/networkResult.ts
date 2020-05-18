@@ -16,7 +16,14 @@ export async function networkResult(signature: Signature) {
       log.info('got network confirmation', { signature: mayBeBlock.signature });
 
       clearInterval(id);
+      clearTimeout(failInt);
       resolve();
     }, 1000);
+
+    const failInt = setTimeout(() => {
+      console.log('network confirmation timeout');
+      clearInterval(id);
+      resolve();
+    }, 10000);
   });
 }
