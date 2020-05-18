@@ -21,7 +21,7 @@ export async function networkResult(signature: Signature) {
     }, 1000);
 
     const failInt = setTimeout(() => {
-      console.log('network confirmation timeout');
+      log.info('network confirmation timeout');
       clearInterval(id);
       resolve();
     }, 10000);
