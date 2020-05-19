@@ -5,7 +5,20 @@ import { log } from './logger';
 
 export async function networkResult(signature: Signature) {
   return new Promise(resolve => {
+    let counter = 0;
+
     const id = setInterval(async () => {
+      counter++;
+
+      // if counter too high, then timeout
+      if (counter > 10) {
+        log.info('network confirmation timeout');
+
+        clearInterval(id);
+        resolve();
+        return;
+      }
+
       // if block is still in progress, wait and repeat
       const mayBeBlock = await getBlock(signature);
 
