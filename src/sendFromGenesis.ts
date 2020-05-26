@@ -21,7 +21,17 @@ export const sendFromGenesis = async (address: string): Promise<{ sendAmount: bi
     await decryptSender(genLeaf, process.env.GEN_AES || '', { forceDecryptBF: true });
     await decryptReceiver(genLeaf, process.env.GEN_NTRU_PRIV || '');
 
-    const rndTxl = Math.floor(Math.random() * 5000000) + 1; // rng between 1..5,000,000
+    const baseAmount = Math.floor(Math.random() * 5000000) + 1; // rng between 1..5,000,000
+    let rndTxl = baseAmount;
+    if (Math.random() > 0.9) {
+      rndTxl = rndTxl * 10;
+      if (Math.random() > 0.9) {
+        rndTxl = rndTxl * 10;
+        if (Math.random() > 0.9) {
+          rndTxl = rndTxl * 10;
+        }
+      }
+    }
     const sendAmount = BigInt(rndTxl) * BigInt(Math.pow(10, 4));
     const newGenBalance = BigInt(genLeaf.senderBalance) - sendAmount;
 
