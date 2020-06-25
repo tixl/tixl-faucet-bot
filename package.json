@@ -8,8 +8,8 @@
     "start": "ts-node src/index.ts"
   },
   "dependencies": {
-    "@tixl/tixl-crypto": "1.9.2",
-    "@tixl/tixl-types": "0.6.0",
+    "@tixl/tixl-crypto": "1.12.2",
+    "@tixl/tixl-types": "0.6.7",
     "@types/node": "13.7.7",
     "@types/promise-queue": "2.2.0",
     "axios": "0.19.2",
@@ -17,6 +17,7 @@
     "faunadb": "^2.12.0",
     "forever": "^2.0.0",
     "hash-emoji": "0.0.4",
+    "lodash": "4.17.15",
     "logdna-winston": "^2.3.1",
     "promise-queue": "2.2.5",
     "telegraf": "3.36.0",

@@ -25,15 +25,16 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@tixl/tixl-crypto@1.9.2":
-  version "1.9.2"
-  resolved "https://npm.pkg.github.com/download/@tixl/tixl-crypto/1.9.2/77afd7e8920040c37835d8e59f00b4b0ce195d371e4154b7614ca7cdd2b558b7#2a4a3e3eed57fbc526f12b734f36e194c185254c"
-  integrity sha512-d0kvkMIR5zb26kk5bbCqB+Udf0oY2KKA9EgMhsu3Vpik/cu7evXicH7+v/0YCT5Z1pCfHl7rtURR9Cmh1kX4ww==
+"@tixl/tixl-crypto@1.12.2":
+  version "1.12.2"
+  resolved "https://npm.pkg.github.com/download/@tixl/tixl-crypto/1.12.2/7a6965766b5af42e8a92fc3933127bfcbf47b19c4131bcec69b89fb2f966a97f#37c44fea45e21d2c560a38ead0215bb87ae0d7b8"
+  integrity sha512-LeLEebefsLLU0YPBZVl6iil6XPEFcyBM2UHUCfFyL7BG1Lh9XY947VIUnRj8lYGoxm5AxwX8reMWce/5YUFKMg==
   dependencies:
     "@tixl/tixl-ntru" "0.1.11"
-    "@tixl/tixl-pedersen-commitments" "2.1.0"
-    "@tixl/tixl-types" "0.6.0"
-    "@tixl/tixl-workflows" "0.10.2"
+    "@tixl/tixl-pedersen-commitments" "^2.1.1"
+    "@tixl/tixl-types" "0.6.7"
+    "@tixl/tixl-workflows" "0.13.4"
+    "@types/aes-js" "3.1.1"
     "@types/bs58" "4.0.1"
     "@types/chai" "4.2.8"
     "@types/create-hash" "1.2.2"
@@ -42,6 +43,7 @@
     "@types/node" "13.5.2"
     "@types/node-fetch" "2.5.4"
     "@types/secp256k1" "3.5.0"
+    aes-js "3.1.2"
     blakejs "1.1.0"
     bs58 "4.0.1"
     js-sha256 "0.9.0"
@@ -59,28 +61,28 @@
   dependencies:
     replace-in-file "4.2.0"
 
-"@tixl/tixl-pedersen-commitments@2.1.0":
-  version "2.1.0"
-  resolved "https://npm.pkg.github.com/download/@tixl/tixl-pedersen-commitments/2.1.0/786776dfc8659f7e7f3aeb0ef7d5d39a3008cd59560e14dbc17d9576c1dcc2e4#5454b1ea35bd6fab618017e703f17cc76121b9c0"
-  integrity sha1-VFSx6jW9b6thgBfnA/F8x2EhucA=
+"@tixl/tixl-pedersen-commitments@^2.1.1":
+  version "2.1.1"
+  resolved "https://npm.pkg.github.com/download/@tixl/tixl-pedersen-commitments/2.1.1/1ba90ac1c450828c597d556716a201a79a457ba0097196ca9a570246426e56e5#9a80a1976f854061f719f66951c67a03f3bc87e6"
+  integrity sha512-a/EAZRRGKMlnzuI9iWiNnGl9L73fvAC+XnYqaeLUs4lwxLY686o0rMpCpZmuNzSRhrIYbpVpi2giSUTQaioDRA==
   dependencies:
     create-hash "^1.2.0"
     long "^4.0.0"
     randombytes "^2.1.0"
 
-"@tixl/tixl-types@0.6.0":
-  version "0.6.0"
-  resolved "https://npm.pkg.github.com/download/@tixl/tixl-types/0.6.0/eb7ab386e5715c597176f78e60d410642ccc61690d31b15f1dd69a35deddb0f7#f4833c8fbcb8e5bdc908d4e71ae3050b9586e5a7"
-  integrity sha512-O/N019AuNs381MCryi2HN1YJfFuScqdnJezAwHi8ze0F8gQ4VgGKBMm/bHWUM5YVvWvVtw5GyFGZnHxRPeARfQ==
+"@tixl/tixl-types@0.6.7":
+  version "0.6.7"
+  resolved "https://npm.pkg.github.com/download/@tixl/tixl-types/0.6.7/4de3b86fbca889a4fb923e3e0727cb8621e70bc433af21fe4853bafcd158dc21#8c9d3471dfa9d2e46c8428d4e1833d82f42e9366"
+  integrity sha512-fIB45CXkxv90Rb/7TAGBOSnejtqY0J3OQb47c7j363zyjrkxfvmtI+dT+N/s0VMVHHaxvGgehXmE0ZO1i+KY3g==
   dependencies:
     jsbi "3.1.1"
 
-"@tixl/tixl-workflows@0.10.2":
-  version "0.10.2"
-  resolved "https://npm.pkg.github.com/download/@tixl/tixl-workflows/0.10.2/7d1c7501ecfd0288ab3013723242d07462a792a49e96fb4136ee1bb29da29b08#e98e3c4fe86afc207d290e5de7fdb00b34c934d3"
-  integrity sha512-pUrtjjYL18k+ftbTyNceBgbuE6RzeiBJ2ioT7qJQaQfOFIT9MAMjQGBnMC1Elhbh0EMt+M+KQ1EPz/kfe1eWTQ==
+"@tixl/tixl-workflows@0.13.4":
+  version "0.13.4"
+  resolved "https://npm.pkg.github.com/download/@tixl/tixl-workflows/0.13.4/285ec1ecafa73f28a143a51e230657187466cd8450e01db0c8eace286066f8eb#a9da585670127696cdec5d13042a7af510575c7c"
+  integrity sha512-gYNmWF3e7e12crw6pgU2xevcZ9PTa5RB486cK80V5mxwtGPsFpBsFC6SEHELUhfDZ5MDWOStotyW5VuDxh1/DA==
   dependencies:
-    "@tixl/tixl-types" "0.6.0"
+    "@tixl/tixl-types" "0.6.7"
     "@types/bs58" "4.0.1"
     "@types/lodash" "4.14.149"
     "@types/node" "13.7.0"
@@ -91,6 +93,11 @@
     jsbi "3.1.1"
     lodash "4.17.15"
     secp256k1 "3.7.1"
+
+"@types/aes-js@3.1.1":
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/@types/aes-js/-/aes-js-3.1.1.tgz#34b3978122310c135de4b377270d1d65676fae28"
+  integrity sha512-SDSGgXT3LRCH6qMWk8OHT1vLSVNuHNvCpKCx2/TYtQMbMGGgxJC9fspwSkQjqzRagrWnCrxuLL3jMNXLXHHvSw==
 
 "@types/bs58@4.0.1":
   version "4.0.1"
@@ -184,6 +191,11 @@ acorn@^7.1.0:
   version "7.1.1"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-7.1.1.tgz#e35668de0b402f359de515c5482a1ab9f89a69bf"
   integrity sha512-add7dgA5ppRPxCFJoAGfMDi7PIBXq1RtGo7BhbLaxwrXPOmw8gq48Y9ozT01hUKy9byMjlR20EJhu5zlkErEkg==
+
+aes-js@3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/aes-js/-/aes-js-3.1.2.tgz#db9aabde85d5caabbfc0d4f2a4446960f627146a"
+  integrity sha512-e5pEa2kBnBOgR4Y/p20pskXI74UEz7de8ZGVo58asOtvSVG5YAbJeELPZxOmt+Bnz3rX753YKhfIn4X4l1PPRQ==
 
 agentkeepalive@^2.2.0:
   version "2.2.0"

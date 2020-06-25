@@ -50,8 +50,8 @@ export async function getBlock(signature: Signature): Promise<Block | undefined>
     });
 }
 
-export async function getBlockchain(signaturePublicKey: SigPublicKey): Promise<Blockchain | undefined> {
-  const res = await axios.get(chainUrl + `?signaturePublicKey=${signaturePublicKey}`, {
+export async function getBlockchain(signaturePublicKey: SigPublicKey, full = false): Promise<Blockchain | undefined> {
+  const res = await axios.get(chainUrl + `?signaturePublicKey=${signaturePublicKey}&full=${full}`, {
     headers: {
       'content-type': 'application/json',
     },
