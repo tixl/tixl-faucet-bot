@@ -10,6 +10,7 @@ import {
 } from '@tixl/tixl-types';
 
 import { log } from './logger';
+import { calculateDoublePow } from './microPow';
 
 const sendUrl = process.env.GATEWAY_URL + '/transaction';
 const chainUrl = process.env.GATEWAY_URL + '/blockchain';
@@ -67,8 +68,27 @@ export async function getBlockchain(signaturePublicKey: SigPublicKey, full = fal
   return chain;
 }
 
+const powTarget = [
+  { pos: 0, character: '0' },
+  { pos: 1, character: '0' },
+  { pos: 2, character: '0' },
+  { pos: 3, character: '0' },
+];
+
+const powTargetAlt = [
+  { pos: 0, character: '1' },
+  { pos: 1, character: '1' },
+  { pos: 2, character: '1' },
+  { pos: 3, character: '1' },
+];
+
 export async function sendTx(transaction: Transaction) {
   log.info('sending tx to gateway', { publicSig: transaction.publicSig });
+
+  transaction.blocks = transaction.blocks.map(block => {
+    const nonce = calculateDoublePow(block.signature as string, powTarget, powTargetAlt);
+    return { ...block, nonce } as any;
+  });
 
   const res = await axios.post(sendUrl, {
     transaction,
