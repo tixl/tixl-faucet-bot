@@ -8,7 +8,7 @@
     "start": "ts-node src/index.ts"
   },
   "dependencies": {
-    "@tixl/tixl-crypto": "1.12.2",
+    "@tixl/tixl-sdk-js": "0.1.8",
     "@tixl/tixl-types": "0.6.7",
     "@types/node": "13.7.7",
     "@types/promise-queue": "2.2.0",

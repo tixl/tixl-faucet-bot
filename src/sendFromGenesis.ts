@@ -1,7 +1,9 @@
 import Queue from 'promise-queue';
 import { AssetSymbol, Block, Signature } from '@tixl/tixl-types';
-import { createSendBlock, decryptSender, decryptReceiver } from '@tixl/tixl-crypto';
+import { decryptSender, decryptReceiver } from '@tixl/tixl-sdk-js/workflows/api/encryption';
+import { createSendBlock } from '@tixl/tixl-sdk-js/workflows/api/send';
 
+import { crypto } from './crypto';
 import { sendTx, getBlockchain } from './gateway-helper';
 import { networkResult } from './networkResult';
 import { log } from './logger';
@@ -18,8 +20,8 @@ export const sendFromGenesis = async (address: string): Promise<{ sendAmount: bi
 
     if (!genChain || !genLeaf) throw 'no genesis chain found';
 
-    await decryptSender(genLeaf, process.env.GEN_AES || '', { forceDecryptBF: true });
-    await decryptReceiver(genLeaf, process.env.GEN_NTRU_PRIV || '');
+    await decryptSender(crypto, genLeaf, process.env.GEN_AES || '', { forceDecryptBF: true });
+    await decryptReceiver(crypto, genLeaf, process.env.GEN_NTRU_PRIV || '');
 
     const baseAmount = Math.floor(Math.random() * 5000000) + 1; // rng between 1..5,000,000
     let rndTxl = baseAmount;
@@ -38,6 +40,7 @@ export const sendFromGenesis = async (address: string): Promise<{ sendAmount: bi
     log.info('Current genesis balance', { balance: String(genLeaf.senderBalance) });
 
     const send = await createSendBlock(
+      crypto,
       genChain.leaf() as Block,
       genChain.publicSig,
       sendAmount,
