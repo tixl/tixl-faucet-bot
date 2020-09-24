@@ -91,3 +91,5 @@ bot.on('text', async (ctx: any) => {
   }
 });
 bot.launch();
+
+console.log('Faucet bot launched');
