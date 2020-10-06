@@ -10,8 +10,14 @@ import { startLifeSignal } from './lifeSignal';
 import getNtruPublicKey from './getNtruPublicKey';
 import { queue } from './sendFromGenesis';
 
-if (process.env.NODE_ENV === 'production') {
-  configureLogger(process.env.LOGDNA_KEY, process.env.LOGDNA_APP);
+if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'local_with_logger') {
+  configureLogger(
+    process.env.APEX_URL,
+    process.env.APEX_AUTH,
+    process.env.APEX_PROJECT,
+    process.env.NET,
+    process.env.SERVICE,
+  );
   startLifeSignal();
 }
 
@@ -65,9 +71,9 @@ bot.on('text', async (ctx: any) => {
 
             ctx.reply(
               `I just sent you ~${txlAmount} TXL, you should receive it soon. The signature of the send block is:
-              
+
               ${emojiSig}
-              
+
               You can track the transaction on https://explorer.tixl.dev`,
             );
 

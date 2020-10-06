@@ -12,6 +12,7 @@
     "@tixl/tixl-types": "0.6.7",
     "@types/node": "13.7.7",
     "@types/promise-queue": "2.2.0",
+    "apex-logs-winston": "^1.1.0",
     "axios": "0.19.2",
     "dotenv": "^8.2.0",
     "faunadb": "^2.12.0",
