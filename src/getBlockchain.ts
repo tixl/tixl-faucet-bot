@@ -1,14 +1,14 @@
 import axios from 'axios';
-import { SigPublicKey, NTRUPublicKey } from '@tixl/tixl-types';
+import { SigPublicKey, Blockchain } from '@tixl/tixl-types';
 
 const chainUrl = process.env.GATEWAY_URL + '/blockchain';
 
-export default async function getNtruPublicKey(publicSig: SigPublicKey): Promise<NTRUPublicKey | undefined> {
+export default async function getBlockchain(publicSig: SigPublicKey): Promise<Blockchain | undefined> {
   return axios
     .get(chainUrl + `?full=false&signaturePublicKey=${publicSig}`)
     .then(res => {
       if (res.data.blockchain) {
-        return res.data.blockchain.publicNtru;
+        return res.data.blockchain;
       }
     })
     .catch(err => {

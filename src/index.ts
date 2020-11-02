@@ -7,7 +7,7 @@ const { canUserReceive, updateOrCreateUserTimestamp } = require('./fauna');
 import eh from 'hash-emoji';
 import { log, configureLogger } from './logger';
 import { startLifeSignal } from './lifeSignal';
-import getNtruPublicKey from './getNtruPublicKey';
+import getBlockchain from './getBlockchain';
 import { queue } from './sendFromGenesis';
 
 if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'local_with_logger') {
@@ -46,9 +46,9 @@ bot.on('text', async (ctx: any) => {
             parse_mode: 'Markdown',
           });
 
-          const ntruPublicKey = await getNtruPublicKey(address);
+          const chainTest = await getBlockchain(address);
 
-          if (!ntruPublicKey) {
+          if (!chainTest) {
             log.info('Public signature key has no corresponding blockchain');
             ctx.reply(`There does not seem to be a blockchain for this address.`);
             return;
@@ -62,7 +62,7 @@ bot.on('text', async (ctx: any) => {
           }
 
           process.nextTick(async () => {
-            const { sendAmount, signature } = await sendFromGenesis(ntruPublicKey);
+            const { sendAmount, signature } = await sendFromGenesis(address);
             const txlAmount = sendAmount / BigInt(Math.pow(10, 7));
 
             log.info('created send block', { amount: String(sendAmount), signature });
