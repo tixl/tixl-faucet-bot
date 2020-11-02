@@ -8,8 +8,8 @@
     "start": "ts-node src/index.ts"
   },
   "dependencies": {
-    "@tixl/tixl-sdk-js": "0.1.8",
-    "@tixl/tixl-types": "0.6.7",
+    "@tixl/tixl-sdk-js": "0.2.1",
+    "@tixl/tixl-types": "0.6.11",
     "@types/node": "13.7.7",
     "@types/promise-queue": "2.2.0",
     "apex-logs-winston": "^1.1.0",

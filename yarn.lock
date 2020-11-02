@@ -48,14 +48,14 @@
     long "^4.0.0"
     randombytes "^2.1.0"
 
-"@tixl/tixl-sdk-js@0.1.8":
-  version "0.1.8"
-  resolved "https://npm.pkg.github.com/download/@tixl/tixl-sdk-js/0.1.8/d22c398a895897b62c585b9a97676d5191c1f0e9c5e7d661aad3b1ccaf0aed1b#3298eeb1374c4afd58a0a25b81f6fd2ddc5a183d"
-  integrity sha512-bF85YtxILQesdSFR46vusgcAUSPq86LOA5uAg23nUDrVAx4L46GkoBoPResKcurJ0YR6uzGhH2tLe0aa1190DQ==
+"@tixl/tixl-sdk-js@0.2.1":
+  version "0.2.1"
+  resolved "https://npm.pkg.github.com/download/@tixl/tixl-sdk-js/0.2.1/4a8058072b0d35503a7c8ad84b543a13064eccdc579a1111a3853b1f3a32d5ca#fa556c5a2ffba2a3d22d09e6ae2c43e8f82553f4"
+  integrity sha512-SIstcsvDaEE656XqHttYm/lFiYYAVdTEGrTpgG6cj36HHudwD8K5Biu4hLhxfPik7IlVO+jpgzqk0XwYdc23Ww==
   dependencies:
     "@tixl/tixl-ntru" "0.1.11"
     "@tixl/tixl-pedersen-commitments" "2.1.1"
-    "@tixl/tixl-types" "0.6.7"
+    "@tixl/tixl-types" "0.6.11"
     aes-js "3.1.2"
     axios "0.19.2"
     base64-js "1.3.1"
@@ -72,12 +72,12 @@
     redux-thunk "2.3.0"
     secp256k1 "3.7.1"
 
-"@tixl/tixl-types@0.6.7":
-  version "0.6.7"
-  resolved "https://npm.pkg.github.com/download/@tixl/tixl-types/0.6.7/4de3b86fbca889a4fb923e3e0727cb8621e70bc433af21fe4853bafcd158dc21#8c9d3471dfa9d2e46c8428d4e1833d82f42e9366"
-  integrity sha512-fIB45CXkxv90Rb/7TAGBOSnejtqY0J3OQb47c7j363zyjrkxfvmtI+dT+N/s0VMVHHaxvGgehXmE0ZO1i+KY3g==
+"@tixl/tixl-types@0.6.11":
+  version "0.6.11"
+  resolved "https://npm.pkg.github.com/download/@tixl/tixl-types/0.6.11/e17dd09f23da72157eca87cd809b8ae3a4ddf240e1877e51f245f35e2b71d55f#259c73a054446bf171c6cdcaa3a8b349e9b92d67"
+  integrity sha512-l/b33nH25R2a9VaZhf8lcb5o3Xzw5Frtzt9/o0jpY6iAlyi516xCIP6VCU7yHEkwXoncrBVsVOE+bK/CSln0ug==
   dependencies:
-    jsbi "3.1.1"
+    jsbi "3.1.4"
 
 "@types/color-name@^1.1.1":
   version "1.1.1"
@@ -1950,6 +1950,11 @@ jsbi@3.1.1:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/jsbi/-/jsbi-3.1.1.tgz#8ea18b3e08d102c6cc09acaa9a099921d775f4fa"
   integrity sha512-+HQESPaV0mRiH614z4JPVPAftcRC2p53x92lySPzUzFwJbJTMpzHz8OYUkcXPN3fOcHUe0NdVcHnCtX/1+eCrA==
+
+jsbi@3.1.4:
+  version "3.1.4"
+  resolved "https://registry.yarnpkg.com/jsbi/-/jsbi-3.1.4.tgz#9654dd02207a66a4911b4e4bb74265bc2cbc9dd0"
+  integrity sha512-52QRRFSsi9impURE8ZUbzAMCLjPm4THO7H2fcuIvaaeFTbSysvkodbQQXIVsNgq/ypDbq6dJiuGKL0vZ/i9hUg==
 
 json-parse-better-errors@^1.0.1:
   version "1.0.2"
