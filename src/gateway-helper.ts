@@ -86,7 +86,7 @@ export async function sendTx(transaction: Transaction) {
   log.info('sending tx to gateway', { publicSig: transaction.publicSig });
 
   transaction.blocks = transaction.blocks.map(block => {
-    const nonce = calculateDoublePow(block.signature as string, powTarget, powTargetAlt);
+    const nonce = calculateDoublePow(block.prev as string, powTarget, powTargetAlt);
     return { ...block, nonce } as any;
   });
 
