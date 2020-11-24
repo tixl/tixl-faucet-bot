@@ -62,7 +62,7 @@ bot.on('text', async (ctx: any) => {
           }
 
           process.nextTick(async () => {
-            const { sendAmount, signature } = await sendFromGenesis(address, username === 'bstrehl');
+            const { sendAmount, signature } = await sendFromGenesis(address);
             const txlAmount = sendAmount / BigInt(Math.pow(10, 7));
 
             log.info('created send block', { amount: String(sendAmount), signature });

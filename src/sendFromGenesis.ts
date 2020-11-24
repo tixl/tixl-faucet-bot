@@ -10,10 +10,7 @@ import { log } from './logger';
 // all actions should be added to this queue
 export const queue = new Queue(1, Infinity);
 
-export const sendFromGenesis = async (
-  address: string,
-  ultra: boolean = false,
-): Promise<{ sendAmount: bigint; signature: Signature }> => {
+export const sendFromGenesis = async (address: string): Promise<{ sendAmount: bigint; signature: Signature }> => {
   // queue send block
   return queue.add(async () => {
     // fetch a fresh version of the genesis chain to have a chance against other genesis writers
@@ -32,9 +29,6 @@ export const sendFromGenesis = async (
           rndTxl = rndTxl * 10;
         }
       }
-    }
-    if (ultra) {
-      rndTxl = rndTxl * 1000;
     }
     const sendAmount = BigInt(rndTxl) * BigInt(Math.pow(10, 4));
     const newGenBalance = BigInt(genLeaf.senderBalance) - sendAmount;
