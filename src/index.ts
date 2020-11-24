@@ -21,7 +21,7 @@ if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'local_wit
   startLifeSignal();
 }
 
-const admins: string[] = ['bstrehl', 'ceichinger', 'seb0zz', 'CorentinCl', 'Moecxck', 'tam_mo'];
+const admins: string[] = ['bstrehl', 'ceichinger', 'seb0zz', 'CorentinCl', 'Moecxck', 'tam_mo', 'maxmuel'];
 const isAdmin = (username: string) => admins.some(a => a === username);
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
