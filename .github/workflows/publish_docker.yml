@@ -6,6 +6,7 @@ on:
       - test
       - stage
       - dev
+      - main
 
 jobs:
   build-and-push:
